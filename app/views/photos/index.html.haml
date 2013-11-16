@@ -1,0 +1,37 @@
+%h1
+  Listing photos
+#tag_cloud
+  - tag_cloud Photo.tag_counts, %w[s m l] do |tag, css_class|
+    = link_to tag.name, tag_path(tag.name), class: css_class
+%table
+  %thead
+    %tr
+      %th
+        Title
+      %th
+      %th
+      %th
+      %th
+        Tags
+
+
+  %tbody
+    - @photos.each do |photo|
+      %tr
+        %td
+          = photo.title
+        %td
+          = link_to image_tag(photo.photo.url(:thumb)), photo
+        %td
+          = link_to 'Edit', edit_photo_path(photo)
+        %td
+          = link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          =raw  photo.tag_list.map{ |t| link_to t, tag_path(t) }.join(', ')
+
+
+
+
+
+%br
+= link_to 'New Photo', new_photo_path

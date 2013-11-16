@@ -4,7 +4,11 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    if params[:tag]
+      @photos = Photo.tagged_with(params[:tag])
+    else
+      @photos = Photo.all
+    end    
   end
 
   # GET /photos/1
@@ -71,5 +75,6 @@ class PhotosController < ApplicationController
     def photo_params
       params.require(:photo).permit(:title)
       params.require(:photo).permit(:photo)
+      params.require(:photo).permit(:tag_list)
     end
 end
