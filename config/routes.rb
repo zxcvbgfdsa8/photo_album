@@ -1,5 +1,6 @@
 PhotoAlbum::Application.routes.draw do
   get 'tags/:tag', to: 'photos#index', as: :tag
+  get "photos/tags" => "photos#tags", :as => :tags
   resources :photos
   root to: 'photos#index'
 

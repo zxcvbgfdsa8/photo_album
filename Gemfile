@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 1.2'
 gem "paperclip", "~> 3.0"
 gem 'acts-as-taggable-on'
 gem 'haml-rails'
+gem "jquery-rails"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
