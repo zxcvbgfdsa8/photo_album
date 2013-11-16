@@ -68,7 +68,15 @@ class PhotosController < ApplicationController
   def tags    
     @tags = ActsAsTaggableOn::Tag.where("tags.name LIKE ?", "%#{params[:q]}%") 
     respond_to do |format|
-      format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name }} }
+      format.json { 
+        tags = @tags.collect { |t| 
+          {:id => t.name, :name => t.name }
+        }
+        if params[:q] 
+          tags << {:id => params[:q], :name => params[:q] } unless tags.include? params[:q]
+        end        
+        render :json => tags
+      }
     end
   end
   private
