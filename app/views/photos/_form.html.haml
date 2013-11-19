@@ -1,0 +1,29 @@
+- content_for :header do 
+  = javascript_include_tag 'tags'  
+
+= form_for(@photo, :html => { :multipart => true }) do |f|
+  - if @photo.errors.any?
+    #error_explanation
+      %h2
+        = "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
+        %ul
+          - @photo.errors.full_messages.each do |msg|
+            %li
+              = msg
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = image_tag @photo.photo.url(:medium)
+    <br>
+    = f.label :photo
+    <br>
+    = f.file_field :photo
+  .field
+    = f.label :tag_list, "Tags (separated by commas)"
+    <br>
+    = f.text_field :tag_list,
+                      :id => 'photo_tags',
+                      "data-pre" => @photo.tags.map{|t| {:id => t.name, :name => t.name }}.to_json
+  .actions
+    = f.submit

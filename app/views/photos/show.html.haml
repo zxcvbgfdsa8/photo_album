@@ -1,16 +1,16 @@
 %p#noteice
 	= notice
-
 %p
 	%strong
 		Title:
 	= @photo.title
+%p
+	= @photo.date_taken
 %p	
 	= image_tag @photo.photo.url(:medium)
 %p
 	%strong
 		Tags:
-	= @photo.tag_list
-
+	= @photo.tag_list	
 = link_to 'Edit', edit_photo_path(@photo) |
 = link_to 'Back', photos_path

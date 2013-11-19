@@ -43,6 +43,7 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    exifr (1.1.3)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -128,6 +129,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   coffee-rails (~> 4.0.0)
+  exifr
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails

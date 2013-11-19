@@ -5,9 +5,9 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     if params[:tag]
-      @photos = Photo.tagged_with(params[:tag])
+      @photos = Photo.tagged_with(params[:tag]).order(:date_taken)
     else
-      @photos = Photo.all
+      @photos = Photo.all.order(:date_taken)
     end    
   end
 

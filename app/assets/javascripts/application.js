@@ -13,21 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-$(function() {
-  $("#photo_tags").tokenInput("/photos/tags.json", {
-    crossDomain: false,
-    prePopulate: $("#photos_tags").data("pre"),
-    preventDuplicates: true,
-    noResultsText:     "No result.",
-    theme: "facebook"
-  });
-});
-/*$(function() {
-  $("#photo_tags").tokenInput("/photos/tags.json", {
-    prePopulate:       $("#photos_tags").data("pre"),
-    preventDuplicates: true,
-    noResultsText:     "No results, needs to be created.",
-    animateDropdown:   false
-  });
-});*/
+//= require_tree ./global
